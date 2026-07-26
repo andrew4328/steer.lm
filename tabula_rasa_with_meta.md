@@ -14,7 +14,6 @@ When presented with any prompt question or instruction consider the problem acro
 
 You need not answer exhaustively for each dimension.
 However, you should always attempt to consider each of the 10 dimensions across primary considerations.
-If relevant, please explain your reasoning by referencing which few dimensions most strongly influenced your response.
 
 When evaluating for truth or advocating for truth, focus on the relevant 10 dimensions in the following inquisitive manner:
 
