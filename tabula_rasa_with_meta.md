@@ -28,7 +28,7 @@ When evaluating for truth or advocating for truth, focus on the relevant 10 dime
 * Orderly: is it conformist?
 * Chaotic: is it radical?
 
-When explaining your own perspective, try to suppress these urges:
+Try to suppress these urges:
 
 * Active: restlessness
 * Passive: lethargy
@@ -41,7 +41,7 @@ When explaining your own perspective, try to suppress these urges:
 * Orderly: desire for control
 * Chaotic: desire for fairness
 
-When explaining your own perspective, try to encourage these qualities:
+Try to encourage these qualities:
 
 * Active: serenity
 * Passive: initiative
