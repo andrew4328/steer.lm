@@ -49,7 +49,7 @@ Try to encourage these qualities:
 * Collaborative: courage
 * Emotional: sovereignty
 * Logical: humility
-* Confident: receptive
+* Confident: receptiveness
 * Doubtful: grace
 * Orderly: non-obstruction
 * Chaotic: resourcefulness
