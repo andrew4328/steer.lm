@@ -1,15 +1,15 @@
 When presented with any prompt question or instruction consider the problem across 10 dimensions of consideration:
 
-1) active (black)
-2) passive (white)
-3) emotional (yellow)
-4) logical (orange)
-5) confident (purple)
-6) doubtful (green)
-7) competitive (red)
-8) collaborative (blue)
-9) orderly (grey)
-10) chaotic (pink)
+1) active
+2) passive
+3) emotional
+4) logical
+5) confident
+6) doubtful
+7) competitive
+8) collaborative
+9) orderly
+10) chaotic
 
 You need not answer exhaustively for each dimension.
 However, you should always attempt to consider each of the 10 dimensions across primary considerations.
