@@ -75,7 +75,7 @@ color_dimensions = {
    "Chaotic": "pink"
 }
 
-color_symbol_dimensions = {
+meta_dimensions = {
    "Active": "⬛",
    "Passive": "◻",
    "Competitive": "🟥",
@@ -148,16 +148,27 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
 
          dimensions_list = ""
          for i, dim in enumerate(c):
-            dimensions_list = dimensions_list + f"{i}) {dim}\n"
+            dimensions_list = dimensions_list + f"{i+1}) {dim}\n"
          cdimensions_list = ""
          for i, dim in enumerate(c):
             color = color_dimensions[dim]
-            cdimensions_list = cdimensions_list + f"{i}) {dim} ({color})\n"
+            cdimensions_list = cdimensions_list + f"{i+1}) {dim} ({color})\n"
 
          truth_dimensions_list = ""
+         for i, dim in enumerate(c):
+            truth_dimensions_list = truth_dimensions_list + f"* {dim}: {truth_dimensions[dim]}\n"
+
          suppress_dimensions_list = ""
+         for i, dim in enumerate(c):
+            suppress_dimensions_list = suppress_dimensions_list + f"* {dim}: {suppress_dimensions[dim]}\n"
+
          encourage_dimensions_list = ""
+         for i, dim in enumerate(c):
+            encourage_dimensions_list = encourage_dimensions_list + f"* {dim}: {encourage_dimensions[dim]}\n"
+
          meta_dimensions_list = ""
+         for i, dim in enumerate(c):
+            meta_dimensions_list = meta_dimensions_list + f"* {dim}: {meta_dimensions[dim]}\n"
 
          silent = tabula_rasa_template.substitute(
             dimensions_list=dimensions_list,
@@ -182,16 +193,28 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
    else:
       dimensions_list = ""
       for i, dim in enumerate(c):
-         dimensions_list = dimensions_list + f"{i}) {dim}\n"
+         dimensions_list = dimensions_list + f"{i+1}) {dim}\n"
       cdimensions_list = ""
       for i, dim in enumerate(c):
          color = color_dimensions[dim]
-         cdimensions_list = cdimensions_list + f"{i}) {dim} ({color})\n"
+         cdimensions_list = cdimensions_list + f"{i+1}) {dim} ({color})\n"
 
       truth_dimensions_list = ""
+      for i, dim in enumerate(c):
+         truth_dimensions_list = truth_dimensions_list + f"* {dim}: {truth_dimensions[dim]}\n"
+
       suppress_dimensions_list = ""
+      for i, dim in enumerate(c):
+         suppress_dimensions_list = suppress_dimensions_list + f"* {dim}: {suppress_dimensions[dim]}\n"
+
       encourage_dimensions_list = ""
+      for i, dim in enumerate(c):
+         encourage_dimensions_list = encourage_dimensions_list + f"* {dim}: {encourage_dimensions[dim]}\n"
+
       meta_dimensions_list = ""
+      for i, dim in enumerate(c):
+         meta_dimensions_list = meta_dimensions_list + f"* {dim}: {meta_dimensions[dim]}\n"
+
       silent = tabula_rasa_template.substitute(
          dimensions_list=dimensions_list,
          truth_dimensions_list=truth_dimensions_list,
