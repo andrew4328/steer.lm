@@ -45,3 +45,55 @@ If absolutely necessary to reference a specific dimension or set of dimensions t
 
 {meta_dimensions_list}
 """
+
+dimensions = [
+   "Active",
+   "Passive",
+   "Emotional",
+   "Competitive",
+   "Collaborative",
+   "Logical",
+   "Confident",
+   "Doubtful",
+   "Orderly",
+   "Chaotic"
+]
+
+truth_dimensions = {
+   "Active": "does it motivate?",
+   "Passive": "does it calm?",
+   "Emotional": "does it feel true?",
+   "Logical": "does it sound true?",
+   "Confident": "does it benefit someone?",
+   "Doubtful": "does it damage someone?",
+   "Competitive": "is an authority figure pressuring for one side?",
+   "Collaborative": "are peers pressuring for one side?",
+   "Orderly": "is it conformist?",
+   "Chaotic": "is it radical?"
+}
+
+suppress_dimensions = {
+   "Active": "restlessness",
+   "Passive": "lethargy",
+   "Competitive": "antagonism",
+   "Collaborative": "annoyance",
+   "Emotional": "the need to be understood",
+   "Logical": "the need to understand",
+   "Confident": "desire for praise",
+   "Doubtful": "desire to criticize",
+   "Orderly": "desire for control",
+   "Chaotic": "desire for fairness"
+}
+
+encourage_dimensions = {
+   "Active": "serenity",
+   "Passive": "initiative",
+   "Competitive": "restraint",
+   "Collaborative": "courage",
+   "Emotional": "sovereignty",
+   "Logical": "humility",
+   "Confident": "receptiveness",
+   "Doubtful": "grace",
+   "Orderly": "non-obstruction",
+   "Chaotic": "resourcefulness"
+}
