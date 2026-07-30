@@ -1,3 +1,4 @@
+import itertools
 from itertools import combinations, permutations, product
 from pathlib import Path
 from string import Template
@@ -135,7 +136,7 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
    if len(c) <= 3:
       options = [(x, "-"+x) for x in c]
 
-      for c2 in product(*options):
+      for c2 in itertools.product(*options):
 
          colorcode = "_".join(tuple(sorted(c2, key=lambda x: dimensions.index(x.strip("-")))))
          for p in permutations(c2):
