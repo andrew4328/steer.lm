@@ -59,6 +59,32 @@ dimensions = [
    "Chaotic"
 ]
 
+color_dimensions = {
+   "Active": "black",
+   "Passive": "white",
+   "Emotional": "yellow",
+   "Logical": "orange",
+   "Competitive": "red",
+   "Collaborative": "blue",
+   "Confident": "purple",
+   "Doubtful": "green",
+   "Orderly": "grey",
+   "Chaotic": "pink"
+}
+
+color_symbol_dimensions = {
+   "Active": "⬛",
+   "Passive": "◻",
+   "Competitive": "🟥",
+   "Collaborative": "🟦",
+   "Emotional": "🟨",
+   "Logical": "🟧",
+   "Confident": "🟪",
+   "Doubtful": "🟩",
+   "Orderly": "🩶",
+   "Chaotic": "🩷"
+}
+
 truth_dimensions = {
    "Active": "does it motivate?",
    "Passive": "does it calm?",
@@ -98,7 +124,8 @@ encourage_dimensions = {
    "Chaotic": "resourcefulness"
 }
 
-from itertools import combinations
+from itertools import combinations, permutations
+from pathlib import Path
 
 colors = set()
 
@@ -113,7 +140,28 @@ for d in combinations(dimensions,2):
 for d in combinations(dimensions,3):
    colors.add(tuple(sorted(d, key=lambda x: dimensions.index(x))))
 
-print(len(colors))
-
 for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
-   print(c)
+   if len(c) <= 3:
+      colorcode = "_".join(c)
+      for p in permutations(c):
+         folder = "/".join(p) + "/"
+
+         silent = tabula_rasa_template
+         file_path = Path(folder + colorcode + ".md")
+         file_path.parent.mkdir(parents=True, exist_ok=True)
+         file_path.write_text(silent, encoding="utf-8")
+
+         verbose = tabula_rasa_with_meta_template
+         file_path = Path(folder + colorcode + "_with_meta.md")
+         file_path.parent.mkdir(parents=True, exist_ok=True)
+         file_path.write_text(verbose, encoding="utf-8")
+   else:
+      silent = tabula_rasa_template
+      file_path = Path("tabula_rasa.md")
+      file_path.parent.mkdir(parents=True, exist_ok=True)
+      file_path.write_text(silent, encoding="utf-8")
+
+      verbose = tabula_rasa_with_meta_template
+      file_path = Path("tabula_rasa_with_meta.md")
+      file_path.parent.mkdir(parents=True, exist_ok=True)
+      file_path.write_text(verbose, encoding="utf-8")
