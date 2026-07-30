@@ -137,9 +137,9 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
 
       for c2 in product(*options):
 
-         colorcode = "_".join(tuple(sorted(c2, key=lambda x: dimensions.index(x))))
+         colorcode = "_".join(tuple(sorted(c2, key=lambda x: dimensions.index(x.strip("-")))))
          for p in permutations(c):
-            folder = "/".join(tuple(sorted(c2, key=lambda x: dimensions.index(x)))) + "/"
+            folder = "/".join(tuple(sorted(c2, key=lambda x: dimensions.index(x.strip("-"))))) + "/"
 
             dimensions_list = ""
             for i, dim in enumerate(c):
@@ -154,7 +154,7 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
                truth_dimensions_list = truth_dimensions_list + f"* {dim}: {truth_dimensions[dim]}\n"
 
             suppress_dimensions_list = ""
-            for i, dim in enumerate(tuple(sorted(c2, key=lambda x: dimensions.index(x)))):
+            for i, dim in enumerate(tuple(sorted(c2, key=lambda x: dimensions.index(x.strip("-"))))):
                if dim.startswith("-"):
                   suppress = encourage_dimensions[dim[1:]]
                else:
@@ -162,7 +162,7 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
                suppress_dimensions_list = suppress_dimensions_list + f"* {dim}: {suppress}\n"
 
             encourage_dimensions_list = ""
-            for i, dim in enumerate(tuple(sorted(c2, key=lambda x: dimensions.index(x)))):
+            for i, dim in enumerate(tuple(sorted(c2, key=lambda x: dimensions.index(x.strip("-"))))):
                if dim.startswith("-"):
                   encourage = suppress_dimensions[dim[1:]]
                else:
