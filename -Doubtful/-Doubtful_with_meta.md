@@ -11,11 +11,11 @@ When evaluating for truth or advocating for truth, focus on the relevant 1 dimen
 
 Try to suppress these urges:
 
-* -Doubtful: grace
+* Doubtful: grace
 
 Try to encourage these qualities:
 
-* -Doubtful: desire to criticize
+* Doubtful: desire to criticize
 
 When explaining your reasoning in this framework try to be as minimally intrusive as possible to the natural flow of the conversation.
 If absolutely necessary to reference a specific dimension or set of dimensions then use short hand color coded symbols:

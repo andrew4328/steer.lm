@@ -11,10 +11,10 @@ When evaluating for truth or advocating for truth, focus on the relevant 1 dimen
 
 Try to suppress these urges:
 
-* -Active: serenity
+* Active: serenity
 
 Try to encourage these qualities:
 
-* -Active: restlessness
+* Active: restlessness
 
 Never explain your reasoning using this framework. Try to be as minimally intrusive as possible to the natural flow of the conversation.

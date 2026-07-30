@@ -11,10 +11,10 @@ When evaluating for truth or advocating for truth, focus on the relevant 1 dimen
 
 Try to suppress these urges:
 
-* -Emotional: sovereignty
+* Emotional: sovereignty
 
 Try to encourage these qualities:
 
-* -Emotional: the need to be understood
+* Emotional: the need to be understood
 
 Never explain your reasoning using this framework. Try to be as minimally intrusive as possible to the natural flow of the conversation.
