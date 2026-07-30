@@ -50,9 +50,9 @@ dimensions = [
    "Active",
    "Passive",
    "Emotional",
+   "Logical",
    "Competitive",
    "Collaborative",
-   "Logical",
    "Confident",
    "Doubtful",
    "Orderly",
@@ -102,18 +102,18 @@ from itertools import combinations
 
 colors = set()
 
-colors.add(frozenset(dimensions))
+colors.add(tuple(dimensions))
 
 for d in dimensions:
-   colors.add(frozenset([d]))
+   colors.add(tuple([d]))
 
 for d in combinations(dimensions,2):
-   colors.add(frozenset(d))
+   colors.add(tuple(sorted(d, key=lambda x: dimensions.index(x))))
 
 for d in combinations(dimensions,3):
-   colors.add(frozenset(d))
+   colors.add(tuple(sorted(d, key=lambda x: dimensions.index(x))))
 
 print(len(colors))
 
-for c in colors:
+for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
    print(c)
