@@ -1,50 +1,53 @@
+from itertools import combinations, permutations
+from pathlib import Path
+from string import Template
 
-tabula_rasa_template = """When presented with any prompt question or instruction consider the problem across 10 dimensions of consideration:
+tabula_rasa_template = Template("""When presented with any prompt question or instruction consider the problem across 10 dimensions of consideration:
 
-{dimensions_list}
+${dimensions_list}
 
 You need not answer exhaustively for each dimension.
 However, you should always attempt to consider each of the 10 dimensions across primary considerations.
 
 When evaluating for truth or advocating for truth, focus on the relevant 10 dimensions in the following inquisitive manner:
 
-{truth_dimensions_list}
+${truth_dimensions_list}
 
 Try to suppress these urges:
 
-{suppress_dimensions_list}
+${suppress_dimensions_list}
 
 Try to encourage these qualities:
 
-{encourage_dimensions_list}
+${encourage_dimensions_list}
 
 Never explain your reasoning using this framework. Try to be as minimally intrusive as possible to the natural flow of the conversation.
-"""
+""")
 
-tabula_rasa_with_meta_template = """When presented with any prompt question or instruction consider the problem across 10 dimensions of consideration:
+tabula_rasa_with_meta_template = Template("""When presented with any prompt question or instruction consider the problem across 10 dimensions of consideration:
 
-{dimensions_list}
+${dimensions_list}
 
 You need not answer exhaustively for each dimension.
 However, you should always attempt to consider each of the 10 dimensions across primary considerations.
 
 When evaluating for truth or advocating for truth, focus on the relevant 10 dimensions in the following inquisitive manner:
 
-{truth_dimensions_list}
+${truth_dimensions_list}
 
 Try to suppress these urges:
 
-{suppress_dimensions_list}
+${suppress_dimensions_list}
 
 Try to encourage these qualities:
 
-{encourage_dimensions_list}
+${encourage_dimensions_list}
 
 When explaining your reasoning in this framework try to be as minimally intrusive as possible to the natural flow of the conversation.
 If absolutely necessary to reference a specific dimension or set of dimensions then use short hand color coded symbols:
 
-{meta_dimensions_list}
-"""
+${meta_dimensions_list}
+""")
 
 dimensions = [
    "Active",
@@ -124,9 +127,6 @@ encourage_dimensions = {
    "Chaotic": "resourcefulness"
 }
 
-from itertools import combinations, permutations
-from pathlib import Path
-
 colors = set()
 
 colors.add(tuple(dimensions))
@@ -146,22 +146,71 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
       for p in permutations(c):
          folder = "/".join(p) + "/"
 
-         silent = tabula_rasa_template
+         dimensions_list = ""
+         for i, dim in enumerate(c):
+            dimensions_list = dimensions_list + f"{i}) {dim}\n"
+         cdimensions_list = ""
+         for i, dim in enumerate(c):
+            color = color_dimensions[dim]
+            cdimensions_list = cdimensions_list + f"{i}) {dim} ({color})\n"
+
+         truth_dimensions_list = ""
+         suppress_dimensions_list = ""
+         encourage_dimensions_list = ""
+         meta_dimensions_list = ""
+
+         silent = tabula_rasa_template.substitute(
+            dimensions_list=dimensions_list,
+            truth_dimensions_list=truth_dimensions_list,
+            suppress_dimensions_list=suppress_dimensions_list,
+            encourage_dimensions_list=encourage_dimensions_list
+         )
          file_path = Path(folder + colorcode + ".md")
          file_path.parent.mkdir(parents=True, exist_ok=True)
          file_path.write_text(silent, encoding="utf-8")
 
-         verbose = tabula_rasa_with_meta_template
+         verbose = tabula_rasa_with_meta_template.substitute(
+            dimensions_list=cdimensions_list,
+            truth_dimensions_list=truth_dimensions_list,
+            suppress_dimensions_list=suppress_dimensions_list,
+            encourage_dimensions_list=encourage_dimensions_list,
+            meta_dimensions_list=meta_dimensions_list
+         )
          file_path = Path(folder + colorcode + "_with_meta.md")
          file_path.parent.mkdir(parents=True, exist_ok=True)
          file_path.write_text(verbose, encoding="utf-8")
    else:
-      silent = tabula_rasa_template
+      dimensions_list = ""
+      for i, dim in enumerate(c):
+         dimensions_list = dimensions_list + f"{i}) {dim}\n"
+      cdimensions_list = ""
+      for i, dim in enumerate(c):
+         color = color_dimensions[dim]
+         cdimensions_list = cdimensions_list + f"{i}) {dim} ({color})\n"
+
+      truth_dimensions_list = ""
+      suppress_dimensions_list = ""
+      encourage_dimensions_list = ""
+      meta_dimensions_list = ""
+      silent = tabula_rasa_template.substitute(
+         dimensions_list=dimensions_list,
+         truth_dimensions_list=truth_dimensions_list,
+         suppress_dimensions_list=suppress_dimensions_list,
+         encourage_dimensions_list=encourage_dimensions_list
+      )
+      verbose = tabula_rasa_with_meta_template.substitute(
+         dimensions_list=cdimensions_list,
+         truth_dimensions_list=truth_dimensions_list,
+         suppress_dimensions_list=suppress_dimensions_list,
+         encourage_dimensions_list=encourage_dimensions_list,
+         meta_dimensions_list=meta_dimensions_list
+      )
+
       file_path = Path("tabula_rasa.md")
       file_path.parent.mkdir(parents=True, exist_ok=True)
       file_path.write_text(silent, encoding="utf-8")
 
-      verbose = tabula_rasa_with_meta_template
       file_path = Path("tabula_rasa_with_meta.md")
       file_path.parent.mkdir(parents=True, exist_ok=True)
       file_path.write_text(verbose, encoding="utf-8")
+
