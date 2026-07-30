@@ -97,3 +97,23 @@ encourage_dimensions = {
    "Orderly": "non-obstruction",
    "Chaotic": "resourcefulness"
 }
+
+from itertools import combinations
+
+colors = set()
+
+colors.add(frozenset(dimensions))
+
+for d in dimensions:
+   colors.add(frozenset([d]))
+
+for d in combinations(dimensions,2):
+   colors.add(frozenset(d))
+
+for d in combinations(dimensions,3):
+   colors.add(frozenset(d))
+
+print(len(colors))
+
+for c in colors:
+   print(c)
