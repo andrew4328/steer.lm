@@ -240,3 +240,25 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
       file_path.parent.mkdir(parents=True, exist_ok=True)
       file_path.write_text(verbose, encoding="utf-8")
 
+      silent = tabula_rasa_template.substitute(
+         dimensions_list=dimensions_list,
+         truth_dimensions_list=truth_dimensions_list,
+         suppress_dimensions_list=encourage_dimensions_list,
+         encourage_dimensions_list=suppress_dimensions_list
+      )
+      verbose = tabula_rasa_with_meta_template.substitute(
+         dimensions_list=cdimensions_list,
+         truth_dimensions_list=truth_dimensions_list,
+         suppress_dimensions_list=encourage_dimensions_list,
+         encourage_dimensions_list=suppress_dimensions_list,
+         meta_dimensions_list=meta_dimensions_list
+      )
+
+      file_path = Path("tabula_maculata.md")
+      file_path.parent.mkdir(parents=True, exist_ok=True)
+      file_path.write_text(silent, encoding="utf-8")
+
+      file_path = Path("tabula_maculata_with_meta.md")
+      file_path.parent.mkdir(parents=True, exist_ok=True)
+      file_path.write_text(verbose, encoding="utf-8")
+
