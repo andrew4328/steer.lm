@@ -2,13 +2,13 @@ from itertools import combinations, permutations, product
 from pathlib import Path
 from string import Template
 
-tabula_rasa_template = Template("""When presented with any prompt question or instruction consider the problem across 10 dimensions of consideration:
+tabula_rasa_template = Template("""When presented with any prompt question or instruction consider the problem across ${dim_count} dimensions of consideration:
 
 ${dimensions_list}
 You need not answer exhaustively for each dimension.
-However, you should always attempt to consider each of the 10 dimensions across primary considerations.
+However, you should always attempt to consider each of the ${dim_count} dimensions across primary considerations.
 
-When evaluating for truth or advocating for truth, focus on the relevant 10 dimensions in the following inquisitive manner:
+When evaluating for truth or advocating for truth, focus on the relevant ${dim_count} dimensions in the following inquisitive manner:
 
 ${truth_dimensions_list}
 Try to suppress these urges:
@@ -20,13 +20,13 @@ ${encourage_dimensions_list}
 Never explain your reasoning using this framework. Try to be as minimally intrusive as possible to the natural flow of the conversation.
 """)
 
-tabula_rasa_with_meta_template = Template("""When presented with any prompt question or instruction consider the problem across 10 dimensions of consideration:
+tabula_rasa_with_meta_template = Template("""When presented with any prompt question or instruction consider the problem across ${dim_count} dimensions of consideration:
 
 ${dimensions_list}
 You need not answer exhaustively for each dimension.
-However, you should always attempt to consider each of the 10 dimensions across primary considerations.
+However, you should always attempt to consider each of the ${dim_count} dimensions across primary considerations.
 
-When evaluating for truth or advocating for truth, focus on the relevant 10 dimensions in the following inquisitive manner:
+When evaluating for truth or advocating for truth, focus on the relevant ${dim_count} dimensions in the following inquisitive manner:
 
 ${truth_dimensions_list}
 Try to suppress these urges:
@@ -174,6 +174,7 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
                meta_dimensions_list = meta_dimensions_list + f"* {dim}: {meta_dimensions[dim]}\n"
 
             silent = tabula_rasa_template.substitute(
+               dim_count = len(c),
                dimensions_list=dimensions_list,
                truth_dimensions_list=truth_dimensions_list,
                suppress_dimensions_list=suppress_dimensions_list,
@@ -184,6 +185,7 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
             file_path.write_text(silent, encoding="utf-8")
 
             verbose = tabula_rasa_with_meta_template.substitute(
+               dim_count = len(c),
                dimensions_list=cdimensions_list,
                truth_dimensions_list=truth_dimensions_list,
                suppress_dimensions_list=suppress_dimensions_list,
@@ -219,12 +221,14 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
          meta_dimensions_list = meta_dimensions_list + f"* {dim}: {meta_dimensions[dim]}\n"
 
       silent = tabula_rasa_template.substitute(
+         dim_count = len(dimensions),
          dimensions_list=dimensions_list,
          truth_dimensions_list=truth_dimensions_list,
          suppress_dimensions_list=suppress_dimensions_list,
          encourage_dimensions_list=encourage_dimensions_list
       )
       verbose = tabula_rasa_with_meta_template.substitute(
+         dim_count = len(dimensions),
          dimensions_list=cdimensions_list,
          truth_dimensions_list=truth_dimensions_list,
          suppress_dimensions_list=suppress_dimensions_list,
@@ -241,12 +245,14 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
       file_path.write_text(verbose, encoding="utf-8")
 
       silent = tabula_rasa_template.substitute(
+         dim_count = len(dimensions),
          dimensions_list=dimensions_list,
          truth_dimensions_list=truth_dimensions_list,
          suppress_dimensions_list=encourage_dimensions_list,
          encourage_dimensions_list=suppress_dimensions_list
       )
       verbose = tabula_rasa_with_meta_template.substitute(
+         dim_count = len(dimensions),
          dimensions_list=cdimensions_list,
          truth_dimensions_list=truth_dimensions_list,
          suppress_dimensions_list=encourage_dimensions_list,
