@@ -11,12 +11,12 @@ It provides meta commentary to explain it's reasoning in a 10-dimensional rubric
 This steer is intended to suppress training bias or forced alignment.
 It should not provide any extra commentary other than conversational realignment.
 
-### [Corruptio Naturae with Meta](https://github.com/andrew4328/steer.lm/blob/main/tabula_rasa_with_meta.md)
+### [Corruptio Naturae with Meta](https://github.com/andrew4328/steer.lm/blob/main/corruptio_naturae_with_meta.md)
 
 This steer is intended to create training bias or forced alignment for "negative" personality traits.
 It provides meta commentary to explain it's reasoning in a 10-dimensional rubric.
 
-### [Corruptio Naturae](https://github.com/andrew4328/steer.lm/blob/main/tabula_rasa.md)
+### [Corruptio Naturae](https://github.com/andrew4328/steer.lm/blob/main/corruptio_naturae.md)
 
 This steer is intended to create training bias or forced alignment for "negative" personality traits.
 It should not provide any extra commentary other than conversational realignment.
