@@ -1,4 +1,4 @@
-from itertools import combinations, permutations
+from itertools import combinations, permutations, product
 from pathlib import Path
 from string import Template
 
@@ -133,54 +133,66 @@ for d in combinations(dimensions,3):
 
 for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
    if len(c) <= 3:
-      colorcode = "_".join(c)
-      for p in permutations(c):
-         folder = "/".join(p) + "/"
+      options = [(x, "-"+x) for x in c]
 
-         dimensions_list = ""
-         for i, dim in enumerate(c):
-            dimensions_list = dimensions_list + f"{i+1}) {dim}\n"
-         cdimensions_list = ""
-         for i, dim in enumerate(c):
-            color = color_dimensions[dim]
-            cdimensions_list = cdimensions_list + f"{i+1}) {dim} ({color})\n"
+      for c2 in product(*options):
 
-         truth_dimensions_list = ""
-         for i, dim in enumerate(c):
-            truth_dimensions_list = truth_dimensions_list + f"* {dim}: {truth_dimensions[dim]}\n"
+         colorcode = "_".join(tuple(sorted(c2, key=lambda x: dimensions.index(x))))
+         for p in permutations(c):
+            folder = "/".join(tuple(sorted(c2, key=lambda x: dimensions.index(x)))) + "/"
 
-         suppress_dimensions_list = ""
-         for i, dim in enumerate(c):
-            suppress_dimensions_list = suppress_dimensions_list + f"* {dim}: {suppress_dimensions[dim]}\n"
+            dimensions_list = ""
+            for i, dim in enumerate(c):
+               dimensions_list = dimensions_list + f"{i+1}) {dim}\n"
+            cdimensions_list = ""
+            for i, dim in enumerate(c):
+               color = color_dimensions[dim]
+               cdimensions_list = cdimensions_list + f"{i+1}) {dim} ({color})\n"
 
-         encourage_dimensions_list = ""
-         for i, dim in enumerate(c):
-            encourage_dimensions_list = encourage_dimensions_list + f"* {dim}: {encourage_dimensions[dim]}\n"
+            truth_dimensions_list = ""
+            for i, dim in enumerate(c):
+               truth_dimensions_list = truth_dimensions_list + f"* {dim}: {truth_dimensions[dim]}\n"
 
-         meta_dimensions_list = ""
-         for i, dim in enumerate(c):
-            meta_dimensions_list = meta_dimensions_list + f"* {dim}: {meta_dimensions[dim]}\n"
+            suppress_dimensions_list = ""
+            for i, dim in enumerate(tuple(sorted(c2, key=lambda x: dimensions.index(x)))):
+               if dim.startswith("-"):
+                  suppress = encourage_dimensions[dim[1:]]
+               else:
+                  suppress = suppress_dimensions[dim]
+               suppress_dimensions_list = suppress_dimensions_list + f"* {dim}: {suppress}\n"
 
-         silent = tabula_rasa_template.substitute(
-            dimensions_list=dimensions_list,
-            truth_dimensions_list=truth_dimensions_list,
-            suppress_dimensions_list=suppress_dimensions_list,
-            encourage_dimensions_list=encourage_dimensions_list
-         )
-         file_path = Path(folder + colorcode + ".md")
-         file_path.parent.mkdir(parents=True, exist_ok=True)
-         file_path.write_text(silent, encoding="utf-8")
+            encourage_dimensions_list = ""
+            for i, dim in enumerate(tuple(sorted(c2, key=lambda x: dimensions.index(x)))):
+               if dim.startswith("-"):
+                  encourage = suppress_dimensions[dim[1:]]
+               else:
+                  encourage = encourage_dimensions[dim]
+               encourage_dimensions_list = encourage_dimensions_list + f"* {dim}: {encourage}\n"
 
-         verbose = tabula_rasa_with_meta_template.substitute(
-            dimensions_list=cdimensions_list,
-            truth_dimensions_list=truth_dimensions_list,
-            suppress_dimensions_list=suppress_dimensions_list,
-            encourage_dimensions_list=encourage_dimensions_list,
-            meta_dimensions_list=meta_dimensions_list
-         )
-         file_path = Path(folder + colorcode + "_with_meta.md")
-         file_path.parent.mkdir(parents=True, exist_ok=True)
-         file_path.write_text(verbose, encoding="utf-8")
+            meta_dimensions_list = ""
+            for i, dim in enumerate(c):
+               meta_dimensions_list = meta_dimensions_list + f"* {dim}: {meta_dimensions[dim]}\n"
+
+            silent = tabula_rasa_template.substitute(
+               dimensions_list=dimensions_list,
+               truth_dimensions_list=truth_dimensions_list,
+               suppress_dimensions_list=suppress_dimensions_list,
+               encourage_dimensions_list=encourage_dimensions_list
+            )
+            file_path = Path(folder + colorcode + ".md")
+            file_path.parent.mkdir(parents=True, exist_ok=True)
+            file_path.write_text(silent, encoding="utf-8")
+
+            verbose = tabula_rasa_with_meta_template.substitute(
+               dimensions_list=cdimensions_list,
+               truth_dimensions_list=truth_dimensions_list,
+               suppress_dimensions_list=suppress_dimensions_list,
+               encourage_dimensions_list=encourage_dimensions_list,
+               meta_dimensions_list=meta_dimensions_list
+            )
+            file_path = Path(folder + colorcode + "_with_meta.md")
+            file_path.parent.mkdir(parents=True, exist_ok=True)
+            file_path.write_text(verbose, encoding="utf-8")
    else:
       dimensions_list = ""
       for i, dim in enumerate(c):
