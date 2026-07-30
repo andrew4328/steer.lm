@@ -1,7 +1,7 @@
 
 These AI system prompt configurations have various steering functions to give models a different baseline "personality".
 
-All together there are 12283 unique personalities here.
+All together there are 12284 unique personalities here.
 
 ### [Tabula Rasa with Meta](https://github.com/andrew4328/steer.lm/blob/main/tabula_rasa_with_meta.md)
 
