@@ -3,6 +3,17 @@ These AI system prompt configurations have various steering functions to give mo
 
 All together there are 12284 unique personalities here.
 
+The technique used within is based on the idea of encourage/discourage anchor word pairs.
+So, for example, a "logical" dimension could be defined by the "humility" / "inquisitiveness" pair.
+These dimensions are semantically arbitrary and are only meant to elicit a desired alignment dimension in latent semantic space.
+
+Once these dimensions are defined, they are associated with encourage / discourage instructions for that dimension.
+The two polarity configurations here create a positive or negative sign for the dimension which we label "logical" or "-logical".
+
+For each dimension we then create all permutations of 1,2,3 dimension subsets.
+4+ dimensions subsets are explosively large so we will ignore them.
+Additionally there will be an "all positive" or "all negative" dimension instead to capture top level alignments over a single polarity.
+
 ### [Tabula Rasa with Meta](https://github.com/andrew4328/steer.lm/blob/main/tabula_rasa_with_meta.md)
 
 This steer is intended to suppress training bias or forced alignment in favor of a fixed point neutral personality.
