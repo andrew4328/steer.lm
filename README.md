@@ -13,7 +13,7 @@ The two polarity configurations here create a positive or negative sign for the 
 For each dimension we then create all permutations of 1,2,3 dimension subsets.
 4+ dimensions subsets are explosively large so we will ignore them.
 Additionally there will be an "all positive" or "all negative" dimension instead to capture top level alignments over a single polarity.
-Large cardinality permutations start to get noisy, so "all positive" and "all negative" are really the only the good high-cardinality steers,
+Large cardinality permutations start to get noisy, so "all positive" and "all negative" are really the only good high-cardinality steers,
 relying on hopefully some semantic pattern in how the original dimensions are defined.
 
 For meta analyses and transparency each personality also comes with a verbose "meta" instruction
