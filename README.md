@@ -14,6 +14,9 @@ For each dimension we then create all permutations of 1,2,3 dimension subsets.
 4+ dimensions subsets are explosively large so we will ignore them.
 Additionally there will be an "all positive" or "all negative" dimension instead to capture top level alignments over a single polarity.
 
+For meta analyses and transparency each personality also comes with a verbose "meta" instruction
+that will attempt to document it's thought process by referencing color coded personality attributes that influence its thought process.
+
 ### [Tabula Rasa with Meta](https://github.com/andrew4328/steer.lm/blob/main/tabula_rasa_with_meta.md)
 
 This steer is intended to suppress training bias or forced alignment in favor of a fixed point neutral personality.
