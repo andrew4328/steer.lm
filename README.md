@@ -16,7 +16,7 @@ Additionally there will be an "all positive" or "all negative" dimension instead
 Large cardinality permutations start to get noisy, so "all positive" and "all negative" are really the only good high-cardinality steers,
 hopefully relying on some semantic pattern in how the original dimensions are defined.
 
-For meta analyses and transparency each personality also comes with a verbose "meta" instruction
+For meta analyses and transparency each personality also comes with a verbose "meta" alternative
 that will attempt to document it's thought process by referencing color coded personality attributes that influence its thought process.
 
 ### [Tabula Rasa with Meta](https://github.com/andrew4328/steer.lm/blob/main/tabula_rasa_with_meta.md)
