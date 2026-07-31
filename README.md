@@ -17,7 +17,7 @@ Large cardinality permutations start to get noisy, so "all positive" and "all ne
 hopefully relying on some semantic pattern in how the original dimensions are defined.
 
 For meta analyses and transparency each personality also comes with a verbose "meta" alternative
-that will attempt to document it's thought process by referencing color coded personality attributes that influence its thought process.
+that will attempt to document its thought process by referencing color coded personality attributes that influence its thought process.
 
 ### [Tabula Rasa with Meta](https://github.com/andrew4328/steer.lm/blob/main/tabula_rasa_with_meta.md)
 
