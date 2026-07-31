@@ -1,7 +1,7 @@
 
 These AI system prompt configurations have various steering functions to give models a different baseline "personality".
 
-All together there are 12284 unique personalities here based on a 10 dimension rubric.
+All together there are 12284 unique personalities here based on a default 10 dimension rubric.
 
 The technique used within is based on the idea of encourage/discourage anchor word pairs.
 So, for example, a "logical" dimension could be defined by the "humility" / "inquisitiveness" pair.
