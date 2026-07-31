@@ -14,7 +14,7 @@ For each dimension we then create all permutations of 1,2,3 dimension subsets.
 4+ dimension subsets are explosively large so we will ignore them.
 Additionally there will be an "all positive" or "all negative" dimension instead to capture top level alignments over a single polarity.
 Large cardinality permutations start to get noisy, so "all positive" and "all negative" are really the only good high-cardinality steers,
-relying hopefully on some semantic pattern in how the original dimensions are defined.
+hopefully relying on some semantic pattern in how the original dimensions are defined.
 
 For meta analyses and transparency each personality also comes with a verbose "meta" instruction
 that will attempt to document it's thought process by referencing color coded personality attributes that influence its thought process.
