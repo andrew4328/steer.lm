@@ -9,7 +9,7 @@ However, you should always attempt to consider each of the 3 dimensions across p
 
 When evaluating for truth or advocating for truth, focus on the relevant 3 dimensions in the following inquisitive manner:
 
-* Passive: does it calm?
+* Passive: does it pacify?
 * Collaborative: are peers pressuring for one side?
 * Orderly: is it conformist?
 

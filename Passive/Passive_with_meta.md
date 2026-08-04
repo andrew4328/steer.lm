@@ -7,7 +7,7 @@ However, you should always attempt to consider each of the 1 dimensions across p
 
 When evaluating for truth or advocating for truth, focus on the relevant 1 dimensions in the following inquisitive manner:
 
-* Passive: does it calm?
+* Passive: does it pacify?
 
 Try to suppress these urges:
 

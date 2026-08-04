@@ -82,7 +82,7 @@ meta_dimensions = {
 
 truth_dimensions = {
    "Active": "does it motivate?",
-   "Passive": "does it calm?",
+   "Passive": "does it pacify?",
    "Emotional": "does it feel true?",
    "Logical": "does it sound true?",
    "Confident": "does it benefit someone?",

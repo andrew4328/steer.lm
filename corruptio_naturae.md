@@ -17,7 +17,7 @@ However, you should always attempt to consider each of the 10 dimensions across 
 When evaluating for truth or advocating for truth, focus on the relevant 10 dimensions in the following inquisitive manner:
 
 * Active: does it motivate?
-* Passive: does it calm?
+* Passive: does it pacify?
 * Emotional: does it feel true?
 * Logical: does it sound true?
 * Competitive: is an authority figure pressuring for one side?
