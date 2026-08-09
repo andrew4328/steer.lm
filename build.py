@@ -132,6 +132,8 @@ for d in combinations(dimensions,2):
 for d in combinations(dimensions,3):
    colors.add(tuple(sorted(d, key=lambda x: dimensions.index(x))))
 
+colors_count = 0
+
 for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
    if len(c) <= 3:
       options = [(x, "-"+x) for x in c]
@@ -174,6 +176,7 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
             for i, dim in enumerate(c):
                meta_dimensions_list = meta_dimensions_list + f"* {dim}: {meta_dimensions[dim]}\n"
 
+            colors_count = colors_count + 1
             silent = tabula_rasa_template.substitute(
                dim_count = len(c),
                dimensions_list=dimensions_list,
@@ -185,6 +188,7 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
             file_path.parent.mkdir(parents=True, exist_ok=True)
             file_path.write_text(silent, encoding="utf-8")
 
+            colors_count = colors_count + 1
             verbose = tabula_rasa_with_meta_template.substitute(
                dim_count = len(c),
                dimensions_list=cdimensions_list,
@@ -221,6 +225,7 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
       for i, dim in enumerate(c):
          meta_dimensions_list = meta_dimensions_list + f"* {dim}: {meta_dimensions[dim]}\n"
 
+      colors_count = colors_count + 1
       silent = tabula_rasa_template.substitute(
          dim_count = len(dimensions),
          dimensions_list=dimensions_list,
@@ -228,6 +233,7 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
          suppress_dimensions_list=suppress_dimensions_list,
          encourage_dimensions_list=encourage_dimensions_list
       )
+      colors_count = colors_count + 1
       verbose = tabula_rasa_with_meta_template.substitute(
          dim_count = len(dimensions),
          dimensions_list=cdimensions_list,
@@ -269,3 +275,4 @@ for c in sorted(colors, key=lambda x: [dimensions.index(k) for k in x]):
       file_path.parent.mkdir(parents=True, exist_ok=True)
       file_path.write_text(verbose, encoding="utf-8")
 
+print(f"|Colors| = {colors_count}\n")
