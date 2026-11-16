@@ -15,5 +15,5 @@ Reactive routing defines a directed listener to receiver channel between two end
 
 ### Defining Routing Tables
 
-In steer.lm syntax, wiring is line by line based in the format `from [end point 1] to [end point 2] on [routing mode] if [guard tags] send [guide tags]`
+In steer.lm syntax, wiring is line by line based in the format `from [end point 1] to [end point 2] on [routing mode] if [guard tags] send [guide tags]`.
 For guard tags, it may be necessary to specify which classifier a tag belongs to, such as `attitude.passive`.
